@@ -1,5 +1,7 @@
-from database.models import Cinema, Hall
+from database.models import Cinema, Hall, Session, Movie
 from database import get_db
+from datetime import datetime
+from datetime import timedelta
 
 def add_cinema_db(cinema_name:str,
                   cinema_location:str,
@@ -55,6 +57,44 @@ def delete_hall_db(hall_id: int):
         return "Зал успешно удален"
     else:
         return "Зал не найден"
+
+# Вывод сеансов в определенном зале
+def get_session_db(hall_id: int):
+    db = next(get_db())
+    get_session = db.query(Session).filter_by(hall_id=hall_id).first()
+    if get_session:
+        return get_session
+    return "Сеансы не найдены"
+
+# добавление Сеанса
+def add_session_db(movie_id: int,
+                   hall_id: int,
+                   session_datetime:datetime):
+    db = next(get_db())
+    result_movie = db.query(Movie).filter_by(movie_id=movie_id).first()
+    result_hall = db.query(Hall).filter_by(hall_id=hall_id).first()
+    check_session = get_session_db(hall_id)
+
+    if result_movie in check_session.session_datetime:
+        return "Это время занято другим сеансом"
+    add_session = Session(movie_id=movie_id,
+                          hall_id=hall_id,
+                          session_datetime=session_datetime)
+
+    db.add(add_session)
+    db.commit()
+    return "Сеанс добавлен"
+
+
+# удаление сеанса
+def delete_session_db(session_id: int):
+    db = next(get_db())
+    session = db.query(Session).filter_by(session_id=session_id).first()
+    if session:
+        db.delete(session)
+        db.commit()
+        return "Сеанс успешно удален"
+    return "Сеанс не найден"
 
 
 

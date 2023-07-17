@@ -29,5 +29,7 @@ from database.cinemaservice import *
 from database.userservice import *
 from database.cardservice import *
 from database.paymentservice import *
+from database.movieservice import *
+
 
 

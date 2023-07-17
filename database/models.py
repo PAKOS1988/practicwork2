@@ -76,7 +76,6 @@ class Session(Base):
     __tablename__= 'sessions'
     session_id = Column(Integer, autoincrement=True, primary_key=True)
     movie_id = Column(Integer, ForeignKey('movies.movie_id'), nullable=False)
-    cinema_id = Column(Integer, ForeignKey('cinemas.cinema_id'), nullable=False)
     hall_id = Column(Integer, ForeignKey('halls.hall_id'), nullable=False)
     session_datetime = Column(DateTime, nullable=False)
 

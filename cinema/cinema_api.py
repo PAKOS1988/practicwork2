@@ -1,5 +1,7 @@
 from main import app
-from database import add_hall_db, add_cinema_db
+from database import add_hall_db, add_cinema_db, add_session_db
+from datetime import datetime
+from datetime import timedelta
 
 # Добавление кинотеатра в БД
 @app.post('/add_cinema')
@@ -28,5 +30,18 @@ async def add_hall_api(hall_class: str,
                          cinema_id=cinema_id,
                          hall_number_of_seats=hall_number_of_seats,
                          hall_price=hall_price)
+
+    return {"status": 1, "message": result}
+
+
+@app.post('/add_session')
+async def add_session_api(movie_id: int,
+                          cinema_id: int,
+                          hall_id: int,
+                          session_datetime:datetime):
+    result = add_session_db(movie_id = movie_id,
+                           cinema_id = cinema_id,
+                           hall_id = hall_id,
+                           session_datetime = session_datetime)
 
     return {"status": 1, "message": result}

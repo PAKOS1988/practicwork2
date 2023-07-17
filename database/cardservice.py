@@ -32,3 +32,4 @@ def get_exact_card_balance_db(card_number):
     db = next(get_db())
     exact_card = db.query(Card).filter_by(card_number=card_number).first()
     return exact_card.card_balance
+
