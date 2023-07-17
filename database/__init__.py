@@ -26,4 +26,8 @@ def get_db():
 
 #Импорт функционала для БД
 from database.cinemaservice import *
+from database.userservice import *
+from database.cardservice import *
+from database.paymentservice import *
+
 

@@ -6,11 +6,15 @@ from database import add_hall_db, add_cinema_db
 async def add_cinema_api(cinema_name:str,
                          cinema_location:str,
                          cinema_contact:str,
-                         cinema_star:int):
+                         cinema_star:int,
+                         cinema_card_number:int,
+                         cinema_balance:int):
     result = add_cinema_db(cinema_name = cinema_name,
                            cinema_location = cinema_location,
                            cinema_contact = cinema_contact,
-                           cinema_star = cinema_star)
+                           cinema_star = cinema_star,
+                           cinema_card_number = cinema_card_number,
+                           cinema_balance = cinema_balance)
 
     return {"status": 1, "message": result}
 

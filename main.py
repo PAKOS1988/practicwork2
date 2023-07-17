@@ -9,8 +9,10 @@ Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
 from cinema import cinema_api
-# from card_management_transfer import card_api
-# from user_authentication import user_api
+from user import user_api
+from card import card_api
+# from payment import payment_api
+
 
 # запуск проекта фастапи
 # uvicorn main:app --reload
