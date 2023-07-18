@@ -2,8 +2,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
-# Подключение к базе данных
-SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:road69@localhost:5432/practicwork'
+# Подключение к базе данных (road69)
+SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:UTMURMK6D19BK102@localhost:5432/practicwork'
 
 engine = create_engine(SQLALCHEMY_DATABASE_URI, pool_size=20, max_overflow=10)
 
