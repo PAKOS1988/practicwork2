@@ -1,5 +1,5 @@
 from main import app
-from database.cardservice import add_user_card_to_db, delete_user_card_db, get_exact_card_balance_db
+from database.cardservice import add_user_card_to_db, delete_user_card_db, get_exact_card_balance_db, add_balance_card_db
 from datetime import datetime
 
 
@@ -28,7 +28,13 @@ async def delete_user_card_api(card_id:int, user_id:int):
 
 
 # Проверка баланса карты
-@app.balance('/balance_user_card')
+@app.get('/balance_user_card')
 async def balance_user_card_api(card_number: int):
     result = get_exact_card_balance_db(card_number=card_number)
+    return {"status": 1, "message": result}
+
+# Пополнение баланса карты
+@app.post('/balance_user_card')
+async def add_balance_card_api(card_number: int):
+    result = add_balance_card_db(card_number=card_number)
     return {"status": 1, "message": result}

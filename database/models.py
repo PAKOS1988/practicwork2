@@ -88,7 +88,6 @@ class Order(Base):
     order_id = Column(Integer, autoincrement=True, primary_key=True)
     user_id = Column(Integer, ForeignKey('users.user_id'), nullable=False)
     session_id = Column(Integer, ForeignKey('sessions.session_id'), nullable=False)
-    order_count_position = Column(Integer, default=1)
     order_number_position = Column(Integer, nullable=False)
     order_exp_date = Column(DateTime, default=datetime.now())
     order_status = Column(String, default='Ожидает оплату')

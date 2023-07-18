@@ -22,12 +22,12 @@ async def add_movie_api(movie_name: str,
     return {"status": 1, "message": result}
 
 # Удаление фильма
-@app.post('/delete_movie')
+@app.delete('/delete_movie')
 async def del_movie_api(movie_id:int):
     result = delete_movie_db(movie_id=movie_id)
     return {"status": 1, "message": result}
 
-@app.post('/about_movie')
+@app.get('/about_movie')
 async def info_movie_api(movie_id:int):
     result = info_movie_db(movie_id=movie_id)
     return {"status": 1, "message": result}

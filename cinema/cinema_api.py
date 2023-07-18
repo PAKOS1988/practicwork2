@@ -1,5 +1,5 @@
 from main import app
-from database import add_hall_db, add_cinema_db, add_session_db
+from database import  get_session_db,get_all_session_db,add_hall_db, add_cinema_db, add_session_db, delete_session_db, delete_hall_db, delete_cinema_db
 from datetime import datetime
 from datetime import timedelta
 
@@ -33,15 +33,44 @@ async def add_hall_api(hall_class: str,
 
     return {"status": 1, "message": result}
 
-
+# Добавление сеанса
 @app.post('/add_session')
 async def add_session_api(movie_id: int,
-                          cinema_id: int,
                           hall_id: int,
                           session_datetime:datetime):
     result = add_session_db(movie_id = movie_id,
-                           cinema_id = cinema_id,
-                           hall_id = hall_id,
-                           session_datetime = session_datetime)
+                            hall_id = hall_id,
+                            session_datetime = session_datetime)
 
     return {"status": 1, "message": result}
+
+# Удаление сеанса
+@app.delete('/delete_session')
+async def del_session_api(session_id: int):
+    result = delete_session_db(session_id=session_id)
+    return {"status": 1, "message": result}
+
+# Удаление зала
+@app.delete('/delete_hall')
+async def del_hall_api(hall_id: int):
+    result = delete_hall_db(hall_id=hall_id)
+    return {"status": 1, "message": result}
+
+# Удаление кинотеатра
+@app.delete('/delete_cinema')
+async def del_cinema_api(cinema_id: int):
+    result = delete_cinema_db(cinema_id=cinema_id)
+    return {"status": 1, "message": result}
+
+# Вывод сеансов в определенном зале
+@app.get('/get_session_hall')
+async def get_session_hall_api(hall_id: int):
+    result = get_session_db(hall_id=hall_id)
+    return {"status": 1, "message": result}
+
+# Вывод всех сеансов
+@app.get('/get_all_session')
+async def get_all_session_api():
+    result = get_all_session_db()
+    return {"status": 1, "message": result}
+

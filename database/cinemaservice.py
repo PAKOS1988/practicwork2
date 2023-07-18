@@ -96,7 +96,12 @@ def delete_session_db(session_id: int):
         return "Сеанс успешно удален"
     return "Сеанс не найден"
 
+#Вывод всех сеансов
 
-
+def get_all_session_db():
+    db = next(get_db())
+    session = db.query(Session).all()
+    if session:
+        return session
 
 

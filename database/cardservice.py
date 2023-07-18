@@ -33,3 +33,13 @@ def get_exact_card_balance_db(card_number):
     exact_card = db.query(Card).filter_by(card_number=card_number).first()
     return exact_card.card_balance
 
+# Пополнение баланса
+def add_balance_card_db(card_number,amount):
+    db = next(get_db())
+    add_balance = db.query(Card).filter_by(card_number=card_number).first()
+    if add_balance:
+        add_balance.card_balance += amount
+        db.commit()
+        return "Пополнено!"
+    return "Ошибка при вводе номера карты!"
+
