@@ -41,6 +41,8 @@ def payment_order_db(order_id:int,
                 checker_user_card.card_balance>=amount) and (checker_card_cinema.cinema_id == cinema_id and
                                                              checker_card_cinema.cinema_card_number == card_to):
                 new_payment = Transaction(card_from=card_number,card_to=card_to,amount=amount,tansaction_date=datetime.utcnow())
+                checker_user_card.card_balance -= amount
+                checker_card_cinema.cinema_balance += amount
                 checker_order.order_status = "Оплачено"
                 db.add(new_payment)
                 db.commit()
