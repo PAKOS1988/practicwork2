@@ -27,4 +27,4 @@ async def delete_user_api(user_id: int):
 async def get_user_cabinet_api(user_id:int):
     result = get_user_cabinet_db(user_id=user_id)
     result2 = get_user_card_db(user_id=user_id)
-    return {'status': 1, "message": result+result2}
+    return {'status': 1, "message": result}

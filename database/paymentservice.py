@@ -35,12 +35,17 @@ def payment_order_db(order_id:int,
         checker_user = db.query(User).filter_by(user_id=user_id).first()
         checker_user_card = db.query(Card).filter_by(user_id=user_id).first()
         checker_card_cinema = db.query(Cinema).filter_by(cinema_id=cinema_id).first()
+        print(checker_user.user_id)
+        print(checker_card_cinema.cinema_card_number)
+        print(checker_card_cinema.cinema_id)
+        print(checker_user_card.card_balance)
+        print(checker_user_card.card_number)
         if (checker_user_card and checker_card_cinema and checker_user):
             if (checker_user.user_id == user_id and
                 checker_user_card.card_number == card_number and
                 checker_user_card.card_balance>=amount) and (checker_card_cinema.cinema_id == cinema_id and
                                                              checker_card_cinema.cinema_card_number == card_to):
-                new_payment = Transaction(card_from=card_number,card_to=card_to,amount=amount,tansaction_date=datetime.utcnow())
+                new_payment = Transaction(card_from=checker_user_card.card_id,card_to=checker_card_cinema.cinema_id,amount=amount,tansaction_date=datetime.utcnow())
                 checker_user_card.card_balance -= amount
                 checker_card_cinema.cinema_balance += amount
                 checker_order.order_status = "Оплачено"

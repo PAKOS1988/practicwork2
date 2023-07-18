@@ -34,7 +34,7 @@ def get_exact_card_balance_db(card_number):
     return exact_card.card_balance
 
 # Пополнение баланса
-def add_balance_card_db(card_number,amount):
+def add_balance_card_db(card_number, amount):
     db = next(get_db())
     add_balance = db.query(Card).filter_by(card_number=card_number).first()
     if add_balance:

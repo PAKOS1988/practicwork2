@@ -69,7 +69,7 @@ class Movie(Base):
     movie_description = Column(String, default=None)
 
 
-    cinema_fk = relationship(Cinema)
+
 
 # Таблица сеансов
 class Session(Base):
@@ -80,7 +80,6 @@ class Session(Base):
     session_datetime = Column(DateTime, nullable=False)
 
     movie_fk = relationship(Movie)
-    cinema_fk = relationship(Cinema)
     hall_fk = relationship(Hall)
 
 class Order(Base):

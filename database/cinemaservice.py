@@ -74,9 +74,8 @@ def add_session_db(movie_id: int,
     result_movie = db.query(Movie).filter_by(movie_id=movie_id).first()
     result_hall = db.query(Hall).filter_by(hall_id=hall_id).first()
     check_session = get_session_db(hall_id)
+    print(result_movie)
 
-    if result_movie in check_session.session_datetime:
-        return "Это время занято другим сеансом"
     add_session = Session(movie_id=movie_id,
                           hall_id=hall_id,
                           session_datetime=session_datetime)

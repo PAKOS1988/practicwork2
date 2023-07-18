@@ -35,6 +35,6 @@ async def balance_user_card_api(card_number: int):
 
 # Пополнение баланса карты
 @app.post('/balance_user_card')
-async def add_balance_card_api(card_number: int):
-    result = add_balance_card_db(card_number=card_number)
+async def add_balance_card_api(card_number: int, amount:int):
+    result = add_balance_card_db(card_number=card_number, amount=amount)
     return {"status": 1, "message": result}
