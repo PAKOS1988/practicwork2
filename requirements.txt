@@ -4,3 +4,6 @@ fastapi
 uvicorn
 sqlalchemy
 python-multipart
+qrcode
+aiogram
+PIL
