@@ -4,7 +4,6 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from aiogram.dispatcher import filters
 from State.State import CinemaInfo
 from buttons import buttons
-from PIL import Image
 from qrcode_dir.generated_qrcode import generate_qrcode
 import qrcode
 
