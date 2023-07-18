@@ -8,14 +8,14 @@ def first_message_kb():
     return kb_space
 
 def choice_film_kb():
-    conn = psycopg2.connect(host="localhost", port=5432, database="practicwork", user="postgres", password="UTMURMK6D19BK102")
+    conn = psycopg2.connect(host="localhost", port=5432, database="practicwork", user="postgres", password="road69")
     cur = conn.cursor()
     cur.execute("""SELECT movie_name FROM movies""")
     lst_film = cur.fetchall() #список фильмов подставить в нижнию генерацию
     return ReplyKeyboardMarkup([[KeyboardButton(x[0])] for x in lst_film], resize_keyboard=True) # строка генерации и возвращения вместо lst_film нужны фильмы
 
 def choice_cinema_kb():
-    conn = psycopg2.connect(host="localhost", port=5432, database="practicwork", user="postgres", password="UTMURMK6D19BK102")
+    conn = psycopg2.connect(host="localhost", port=5432, database="practicwork", user="postgres", password="road69")
     cur = conn.cursor()
 
     cur.execute("""SELECT cinema_name FROM cinemas""")
@@ -24,7 +24,7 @@ def choice_cinema_kb():
                                resize_keyboard=True)  # строка генерации и возвращения вместо lst_cinema нужны кинотеатры
 
 def choice_data_film_kb():
-    conn = psycopg2.connect(host="localhost", port=5432, database="practicwork", user="postgres", password="UTMURMK6D19BK102")
+    conn = psycopg2.connect(host="localhost", port=5432, database="practicwork", user="postgres", password="road69")
     cur = conn.cursor()
 
     cur.execute("""SELECT movie_release_year FROM movies""")
@@ -33,7 +33,7 @@ def choice_data_film_kb():
                                resize_keyboard=True)  # строка генерации и возвращения вместо lst_data_film нужны дата фильма
 
 def choice_hall_kb():
-    conn = psycopg2.connect(host="localhost", port=5432, database="practicwork", user="postgres", password="UTMURMK6D19BK102")
+    conn = psycopg2.connect(host="localhost", port=5432, database="practicwork", user="postgres", password="road69")
     cur = conn.cursor()
 
     cur.execute("""SELECT cinema_id, hall_class FROM halls""")
@@ -42,7 +42,7 @@ def choice_hall_kb():
                                resize_keyboard=True)  # строка генерации и возвращения вместо lst_hall нужны залы или тип/статус зала
 
 def choice_position_kb():
-    conn = psycopg2.connect(host="localhost", port=5432, database="practicwork", user="postgres", password="UTMURMK6D19BK102")
+    conn = psycopg2.connect(host="localhost", port=5432, database="practicwork", user="postgres", password="road69")
     cur = conn.cursor()
 
     cur.execute("""SELECT order_number_position FROM orders""")
